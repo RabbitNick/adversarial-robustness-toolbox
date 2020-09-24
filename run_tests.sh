@@ -157,11 +157,7 @@ run_test () {
   echo "######################################################################"
   echo ${test}
   echo "######################################################################"
-  if [ "$CI" = true ]; then
-    coverage run --parallel-mode -m unittest -v ${test}
-  else
     coverage run --append -m unittest -v ${test}
-  fi
 
   if [[ $? -ne 0 ]]; then exit_code=1; echo "Failed $test"; fi
 }
@@ -172,8 +168,6 @@ for tests_module in "${tests_modules[@]}"; do
      run_test ${test}
   done
 done
-
-if [ "$CI" = true ]; then coverage combine; fi
 
 bash <(curl -s https://codecov.io/bash)
 
