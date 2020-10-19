@@ -26,6 +26,7 @@ from tests.utils import ARTTestException
 
 logger = logging.getLogger(__name__)
 
+
 @pytest.mark.framework_agnostic
 def test_strip(art_warning, get_default_mnist_subset, image_dl_estimator):
     try:
